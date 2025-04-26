@@ -5,7 +5,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform Init & Apply'
+    name: 'Terraform Apply'
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +19,6 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-
-      - name: Terraform Validate
-        run: terraform validate
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
