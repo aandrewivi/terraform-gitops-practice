@@ -1,4 +1,4 @@
-# provider definition#
+# provider definition
 # This file contains the provider definition for AWS
 provider "aws" {
   region = "us-east-1"
