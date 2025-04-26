@@ -24,7 +24,7 @@ jobs:
       - name: Set up AWS Credentials
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AKIASJRSHQKBGS27PQK3}}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.yW5xkMQmFU+mKUi+fnnm4B1PZ4+a7MxjAXOI4joA }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.yW5xkMQmFU+mKUi+fnnm4B1PZ4+a7MxjAXOI4joA}}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
           echo "AWS credentials set"
