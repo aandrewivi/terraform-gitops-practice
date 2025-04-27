@@ -88,6 +88,9 @@ resource "aws_instance" "drift-lab-instance" {
 
 }
 
+variable "region" {}
+variable "access_key" {}
+variable "secret_key" {}
 
 
 
