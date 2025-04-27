@@ -44,4 +44,7 @@ variable "security_group_cidr_block" {
   default     = "0.0.0.0/0"
 }
 
+variable "region" {}
+variable "access_key" {}
+variable "secret_key" {}
 
