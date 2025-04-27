@@ -44,7 +44,21 @@ variable "security_group_cidr_block" {
   default     = "0.0.0.0/0"
 }
 
-variable "region" {}
-variable "access_key" {}
-variable "secret_key" {}
 
+variable "region" {
+  description = "The AWS region to deploy the resources in"
+  type        = string
+  default     = "us-east-1"
+}
+
+variable "access_key" {
+  description = "The AWS access key ID"
+  type        = string
+
+}
+ 
+variable "secret_key" {
+  description = "The AWS secret access key"
+  type        = string
+
+}
