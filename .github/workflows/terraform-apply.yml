@@ -2,18 +2,13 @@ name: Terraform Apply
 
 on:
   workflow_dispatch:
-    inputs:
-      apply:
-        description: 'Apply changes?'
-        required: true
-        default: 'false'
 
 permissions:
   contents: read
 
 jobs:
   terraform:
-    name: 'Terraform Init, Validate, Plan and Apply'
+    name: 'Terraform Init, Validate, Plan'
     runs-on: ubuntu-latest
 
     steps:
@@ -40,12 +35,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -var="region=${{ secrets.AWS_REGION }}" -var="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-
-      - name: Terraform Apply
-        if: github.event.inputs.apply == 'true'
-        run: terraform apply -auto-approve -var="region=${{ secrets.AWS_REGION }}" -var="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-
-      - name: Clean up Terraform state
-        if: always()
-        run: terraform state list || echo "No state to clean up"
+        run: terraform plan
