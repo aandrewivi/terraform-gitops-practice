@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  issues: write  # Allow creating issues (needed for approval step)
 
 jobs:
   terraform:
