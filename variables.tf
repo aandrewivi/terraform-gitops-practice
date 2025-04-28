@@ -48,7 +48,7 @@ variable "security_group_cidr_block" {
 variable "access_key" {
   description = "The AWS access key ID"
   type        = string
-  default     = "AKIASJRSHQKBPA7NPNUX"
+  default     = "AKIASJRSHQKBHWPLQ6YR"
   sensitive   = true
 
 }
@@ -56,6 +56,6 @@ variable "access_key" {
 variable "secret_key" {
   description = "The AWS secret access key"
   type        = string
-  default     = "h4jSYziKK2XnVBQuHw2wbPcVnrYwuQHVMdwb3H4+9ty"
+  default     = "qYK220vmiW35pPNF8E9ICOgPdr1Y0QdwV9qUl2x/"
   sensitive   = true
 }
