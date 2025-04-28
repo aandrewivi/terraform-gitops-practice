@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform Init, Validate, Plan'
+    name: 'Terraform Init, Validate, Plan, and Apply (with Approval)'
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          echo "AWS credentials set"
+          echo "AWS credentials configured."
 
       - name: Terraform Init
         run: terraform init
@@ -35,4 +35,17 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -out=tfplan
+
+      - name: Wait for approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ secrets.GITHUB_TOKEN }}
+          approvers: ${{ github.actor }}
+          minimum-approvals: 1
+          timeout-minutes: 60
+          issue-title: "Terraform Apply Approval"
+          issue-body: "Please approve the Terraform Apply to proceed."
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
